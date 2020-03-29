@@ -1,0 +1,13 @@
+.footer-img{
+    width: 110px;
+}
+.footer-font{
+    line-height: 120%;
+    letter-spacing: 1px;
+    opacity: 0.5;
+    text-align: center;
+}
+.footer-mp{
+    margin-top: 50px !important;
+    padding-top: 50px !important;
+}

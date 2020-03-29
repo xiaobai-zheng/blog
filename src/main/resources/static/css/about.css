@@ -1,0 +1,13 @@
+body{
+    background: url("../images/bg.png");
+}
+.about-right-tags{
+    margin: 5px !important;
+}
+.about-right-qr{
+    width: 180px !important;
+}
+.about-right-qr-font{
+    margin-top: 5px;
+    color: teal;
+}

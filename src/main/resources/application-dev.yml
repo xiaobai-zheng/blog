@@ -1,0 +1,31 @@
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true #开启了对delete put请求方式的自持
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF8
+    password: 'root123'
+    username: root
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update #当持久类改变的时候，数据库对应的字段也会发生相应的变化
+    show-sql: true #是否在日志和控制台中显示sql语句
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    database: mysql
+
+#日志配置---------------------------------------------------------------------------------------
+logging:
+  level:
+    root: info
+  file:
+    path: logs/blog-dev.log
+    max-size: 10MB
+    max-history: 1
+
+#日志配置---------------------------------------------------------------------------------------
+server:
+  port: 8787

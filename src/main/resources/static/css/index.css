@@ -1,0 +1,51 @@
+body{
+    background: url("/images/bg.png");
+}
+.index-center-display{
+    display: inline-block;
+
+}
+.index-center-bottom-font{
+    opacity: 0.6;
+    margin-left: 8px;
+}
+
+.index-center-center-padding{
+    padding: 30px !important;
+}
+.index-center-a-label {
+    padding: 2px !important;
+    margin-right: 20px !important;
+}
+.labels-center-label{
+    padding: 2px !important;
+    margin-top: 10px !important;
+}
+.index-center-img{
+    width: 200px !important;
+}
+.index-right-tag{
+    margin: 5px !important;
+}
+.index-right-new-font{
+    color: #333 !important;
+}
+.index-right-margin{
+    margin-bottom: 50px !important;
+}
+@media screen and (max-width: 768px){
+    .index-center-center-padding{
+        padding: 15px 0px !important;
+    }
+}
+.tl-center-top{
+    margin-bottom: 30px !important;
+}
+
+
+
+
+
+
+
+

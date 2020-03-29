@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小牛博客</title>
+    <script src="/Jquery/jquery-1.12.4.js" language="JavaScript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" language="JavaScript"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/navigation.css">
+    <script type="text/javascript">
+        function dropdown(){
+            $(".dropdown").dropdown();
+        }
+    </script>
+</head>
+<body>
+<!-- stackable:可推叠 inverted:反转 secondary:灰色 grid:相当于bootstrap的row，分为16各 attached：使div之间的边框靠近-->
+    <!--  导航栏  -->
+    <div th:insert="~{navigation::nav(1)}"></div>
+        <!--  中间内容 stackable:可推叠 -->
+            <div class="ui container">
+                    <div class="ui stackable grid">
+                        <!--   中间左边     -->
+                        <div class="ui eleven wide column">
+                            <div class="ui segments">
+                                <!-- 中间的头部 -->
+                                <div class="ui top attached segment">
+                                    <span class="ui header teal">博客</span>
+                                    <span style="float: right">一共<h2 class="ui orange header index-center-display">14</h2>篇</span>
+                                </div>
+                                <!-- 中间的中间部分 -->
+                                <div class="ui index-center-center-padding segment">
+                                    <div class="ui grid stackable mobile reversed"><!-- mobile reversed 在移动端的时候反转了 -->
+                                        <div class="ui eleven wide column">
+                                            <h3><a href="#" class="header" target="_blank">springBoot 的介绍</a></h3>
+                                            <p>Spring Boot 是由 Pivotal 团队提供的全新框架，其设计目的是用来简化新 Spring 应用的初始搭建以及开发过程。。。</p>
+                                            <div>
+                                                 <span>
+                                                    <img src="https://i.picsum.photos/id/0/5616/3744.jpg" class="ui avatar image">
+                                                    <a href="#">小牛</a>
+                                                </span>
+                                                <span class="index-center-bottom-font">
+                                                    <i class="alternate outline calendar icon"></i>
+                                                    <span>2020-3-9</span>
+                                                 </span>
+                                                <span class="index-center-bottom-font">
+                                                    <i class="eye icon"></i>
+                                                    <span>999</span>
+                                                 </span>
+                                                <a href="#" target="_blank" class="ui teal basic label index-center-a-label" style="float: right" >认知升级</a>
+                                            </div>
+                                        </div>
+                                        <div class="ui five wide column">
+                                            <img src="https://i.picsum.photos/id/0/5616/3744.jpg" class="ui rounded image index-center-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui index-center-center-padding segment">
+                                    <div class="ui grid stackable mobile reversed"><!-- mobile reversed 在移动端的时候反转了 -->
+                                        <div class="ui eleven wide column">
+                                            <h3><a href="#" class="header" target="_blank">springBoot 的介绍</a></h3>
+                                            <p>Spring Boot 是由 Pivotal 团队提供的全新框架，其设计目的是用来简化新 Spring 应用的初始搭建以及开发过程。。。</p>
+                                            <div>
+                                                 <span>
+                                                    <img src="https://i.picsum.photos/id/0/5616/3744.jpg" class="ui avatar image">
+                                                    <a href="#">小牛</a>
+                                                </span>
+                                                <span class="index-center-bottom-font">
+                                                    <i class="alternate outline calendar icon"></i>
+                                                    <span>2020-3-9</span>
+                                                 </span>
+                                                <span class="index-center-bottom-font">
+                                                    <i class="eye icon"></i>
+                                                    <span>999</span>
+                                                 </span>
+                                                <a href="#" target="_blank" class="ui teal basic label index-center-a-label" style="float: right" >认知升级</a>
+                                            </div>
+                                        </div>
+                                        <div class="ui five wide column">
+                                            <img src="https://i.picsum.photos/id/0/5616/3744.jpg" class="ui rounded image index-center-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui index-center-center-padding segment">
+                                    <div class="ui grid stackable mobile reversed"><!-- mobile reversed 在移动端的时候反转了 -->
+                                        <div class="ui eleven wide column">
+                                            <h3><a href="#" class="header" target="_blank">springBoot 的介绍</a></h3>
+                                            <p>Spring Boot 是由 Pivotal 团队提供的全新框架，其设计目的是用来简化新 Spring 应用的初始搭建以及开发过程。。。</p>
+                                            <div>
+                                                 <span>
+                                                    <img src="https://i.picsum.photos/id/0/5616/3744.jpg" class="ui avatar image">
+                                                    <a href="#">小牛</a>
+                                                </span>
+                                                <span class="index-center-bottom-font">
+                                                    <i class="alternate outline calendar icon"></i>
+                                                    <span>2020-3-9</span>
+                                                 </span>
+                                                <span class="index-center-bottom-font">
+                                                    <i class="eye icon"></i>
+                                                    <span>999</span>
+                                                 </span>
+                                                <a href="#" target="_blank" class="ui teal basic label index-center-a-label" style="float: right" >认知升级</a>
+                                            </div>
+                                        </div>
+                                        <div class="ui five wide column">
+                                            <img src="https://i.picsum.photos/id/0/5616/3744.jpg" class="ui rounded image index-center-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui index-center-center-padding segment">
+                                    <div class="ui grid stackable mobile reversed"><!-- mobile reversed 在移动端的时候反转了 -->
+                                        <div class="ui eleven wide column">
+                                            <h3><a href="#" class="header" target="_blank">springBoot 的介绍</a></h3>
+                                            <p>Spring Boot 是由 Pivotal 团队提供的全新框架，其设计目的是用来简化新 Spring 应用的初始搭建以及开发过程。。。</p>
+                                            <div>
+                                                 <span>
+                                                    <img src="https://i.picsum.photos/id/0/5616/3744.jpg" class="ui avatar image">
+                                                    <a href="#">小牛</a>
+                                                </span>
+                                                <span class="index-center-bottom-font">
+                                                    <i class="alternate outline calendar icon"></i>
+                                                    <span>2020-3-9</span>
+                                                 </span>
+                                                <span class="index-center-bottom-font">
+                                                    <i class="eye icon"></i>
+                                                    <span>999</span>
+                                                 </span>
+                                                <a href="#" target="_blank" class="ui teal basic label index-center-a-label" style="float: right" >认知升级</a>
+                                            </div>
+                                        </div>
+                                        <div class="ui five wide column">
+                                            <img src="https://i.picsum.photos/id/0/5616/3744.jpg" class="ui rounded image index-center-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui index-center-center-padding segment">
+                                    <div class="ui grid stackable mobile reversed"><!-- mobile reversed 在移动端的时候反转了 -->
+                                        <div class="ui eleven wide column">
+                                            <h3><a href="#" class="header" target="_blank">springBoot 的介绍</a></h3>
+                                            <p>Spring Boot 是由 Pivotal 团队提供的全新框架，其设计目的是用来简化新 Spring 应用的初始搭建以及开发过程。。。</p>
+                                            <div>
+                                                 <span>
+                                                    <img src="https://i.picsum.photos/id/0/5616/3744.jpg" class="ui avatar image">
+                                                    <a href="#">小牛</a>
+                                                </span>
+                                                <span class="index-center-bottom-font">
+                                                    <i class="alternate outline calendar icon"></i>
+                                                    <span>2020-3-9</span>
+                                                 </span>
+                                                <span class="index-center-bottom-font">
+                                                    <i class="eye icon"></i>
+                                                    <span>999</span>
+                                                 </span>
+                                                <a href="#" target="_blank" class="ui teal basic label index-center-a-label" style="float: right" >认知升级</a>
+                                            </div>
+                                        </div>
+                                        <div class="ui five wide column">
+                                            <img src="https://i.picsum.photos/id/0/5616/3744.jpg" class="ui rounded image index-center-img">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 底部 -->
+                                <div class="ui bottom attached segment">
+                                    <a class="ui teal mini basic button">上一页</a>
+                                    <a class="ui teal  mini basic button" style="float: right">下一页</a>
+                                </div>
+                            </div>
+                        </div>
+<!--         中的左边部分               -->
+                        <div class="ui five wide column">
+                            <!-- 分类 -->
+                            <div class="ui segments index-right-margin">
+                                <div class="ui secondary segment">
+                                    <div class="ui two column grid">
+                                        <div class="column">
+                                            <span class="teal"><i class="idea icon"></i>分类 </span>
+                                        </div>
+                                        <div class="right aligned column">
+                                            <a class="ui teal">more<i class="angle double right icon"></i> </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui segment">
+                                    <div class="ui vertical fluid divided  menu">
+                                        <a class="item">学习日志 <div class="ui teal basic label">51</div>
+                                        </a>
+                                        <a class="item">Updates <div class="ui teal basic label">1</div>
+                                        </a>
+                                        <a class="item">学习日志 <div class="ui teal basic label">51</div>
+                                        </a>
+                                        <a class="item">Updates <div class="ui teal basic label">1</div>
+                                        </a>
+                                        <a class="item">学习日志 <div class="ui teal basic label">51</div>
+                                        </a>
+                                        <a class="item">Updates <div class="ui teal basic label">1</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 标签 -->
+                            <div class="ui segments index-right-margin">
+                                <div class="ui secondary segment">
+                                    <div class="ui two column grid">
+                                        <div class="column">
+                                            <span class="teal"><i class="tags icon"></i>标签 </span>
+                                        </div>
+                                        <div class="right aligned column">
+                                            <a class="ui teal" target="_blank">more<i class="angle double right icon"></i> </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui segment">
+                                    <a href="#" class="ui teal basic label index-right-tag">java基础<div class="detail">9</div></a>
+                                    <a href="#" class="ui teal basic label index-right-tag">MySQL数据库<div class="detail">10</div></a>
+                                    <a href="#" class="ui teal basic label index-right-tag">spring框架<div class="detail">11</div></a>
+                                    <a href="#" class="ui teal basic label index-right-tag">mybaits框架<div class="detail">12</div></a>
+                                    <a href="#" class="ui teal basic label index-right-tag">spring boot<div class="detail">13</div></a>
+                                    <a href="#" class="ui teal basic label index-right-tag">redis<div class="detail">14</div></a>
+                                    <a href="#" class="ui teal basic label index-right-tag">JavaScript<div class="detail">15</div></a>
+                                </div>
+                            </div>
+                            <!-- 最新推荐 -->
+                            <div class="ui segments index-right-margin">
+                                <div class="ui secondary segment">
+                                    <div class="column">
+                                        <span class="teal"><i class="bookmark icon"></i>最新推荐</span>
+                                    </div>
+                                </div>
+                                <div class="ui segment">
+                                    <a href="#" class="index-right-new-font">java基础中的集合框架</a>
+                                </div>
+                                <div class="ui segment">
+                                    <a href="#" class="index-right-new-font">MySQL分类统计</a>
+                                </div>
+                                <div class="ui segment">
+                                    <a href="#" class="index-right-new-font">redis中的数据类型</a>
+                                </div>
+                                <div class="ui segment">
+                                    <a href="#" class="index-right-new-font">spring的核心</a>
+                                </div>
+                                <div class="ui segment">
+                                    <a href="#" class="index-right-new-font">mybtis的工作原理</a>
+                                </div>
+                                <div class="ui segment">
+                                    <a href="#" class="index-right-new-font">spring boot的配置文件</a>
+                                </div>
+                            </div>
+                            <!-- 二维码 -->
+                            <div class="ui segment index-right-margin">
+                                <h4 class="ui horizontal divider header">扫码支付</h4><!-- horizontal divider横分割线 -->
+                                <img src="../static/images/wexing.jpg" alt="" class="ui image centered" style="width: 120px">
+                            </div>
+                        </div>
+                </div>
+            </div>
+    <!--  脚本  -->
+    <div th:insert="~{footer::footer}"></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+<nav class="ui attached inverted segment blogs-nav" th:fragment="nav(n)">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui header teal item">后台管理</h2>
+            <a href="/admin/blogs" class="item navigation-mobile-hide" th:classappend="${n==1?'active':''}"><i class="home icon"></i>博客</a>
+            <a href="/admin/types" class="item navigation-mobile-hide" th:classappend="${n==2?'active':''}"><i class="idea icon"></i>分类</a>
+            <a href="/admin/tags" class="item navigation-mobile-hide" th:classappend="${n==3?'active':''}"><i class="tags icon"></i>标签</a>
+            <div class="item right menu admin-nav">
+                <div class="ui dropdown">
+                    <span th:if="${session.user != null}">
+                        <img th:src="${session.user.avatar}" class="ui avatar image">
+                        <span th:text="${session.user.username}" style="font-weight: bold;font-size: 12px"></span>
+                        <span class="blogs-name"></span><i class="dropdown icon" onclick="nav_dropdown()"></i>
+                    </span>
+                    <div class="menu">
+                        <a href="/admin/blogs" class="item navigation-mobile-font navigation-mobile-show"><i class="home icon"></i>博客</a>
+                        <a href="/admin/types" class="item navigation-mobile-font navigation-mobile-show"><i class="idea icon"></i>分类</a>
+                        <a href="/admin/tags" class="item navigation-mobile-font navigation-mobile-show"><i class="tags icon"></i>标签</a>
+                        <a href="/admin/logout" class="item navigation-mobile-font" th:if="${session.user != null}"><i class="trash alternate icon"></i>退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="ui attached secondary segment" th:fragment="tools(t)">
+    <div class="ui container">
+        <a href="#" class="ui button" th:classappend="${t==1?'bottom pointing active':''}"><i class="th icon"></i> 列表</a>
+        <a href="#" class="ui button" th:classappend="${t==2?'bottom pointing active':''}"><i class="plus icon"></i> 发布</a>
+    </div>
+</div>
+</body>
+</html>

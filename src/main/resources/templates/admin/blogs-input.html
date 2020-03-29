@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小牛博客|发布</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js" language="JavaScript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" language="JavaScript"></script>
+    <script src="/lib/editormd/editormd.min.js" language="JavaScript"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="/lib/editormd/css/editormd.min.css">
+    <link rel="stylesheet" href="/css/admin/blogs.css">
+    <link rel="stylesheet" href="/css/navigation.css">
+</head>
+<body>
+<!--导航-->
+<div th:insert="~{admin/navigation::nav(1)}"></div>
+<div th:insert="~{admin/navigation::tools(2)}"></div>
+<!--中间部分-->
+<div class="ui container">
+    <!--  中间头部表单部分  -->
+    <form class="ui form padded segment  blogs-center" action="" method="post">
+         <div class="field">
+             <div class="ui left labeled input">
+                 <div class="ui dropdown selection teal label compact"><!-- compact:用于容器大小适应文本的 -->
+                     <input type="hidden" name="publish-type" data-value="1">
+                     <div class="text">原创</div>
+                     <i class="dropdown icon"></i>
+                     <div class="menu">
+                         <div class="item" data-value="1">原创</div>
+                         <div class="item" data-value="2">转载</div>
+                         <div class="item" data-value="3">翻译</div>
+                     </div>
+                 </div>
+                 <input type="text" name="title" placeholder="标题">
+             </div>
+         </div>
+        <div class="field">
+            <div id="md-editormd" style="z-index: 1">
+                <textarea name="content" placeholder="博客内容" style="display: none"></textarea>
+            </div>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <div class="ui left labeled input">
+                    <div class="ui teal label">分类</div>
+                    <div class="ui dropdown selection fluid">
+                        <input type="hidden" name="type">
+                        <div class="default text">分类</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="a">错误日志</div>
+                            <div class="item" data-value="a">开发者手图</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left labeled input">
+                    <div class="ui teal label">标签</div>
+                    <div class="ui dropdown multiple search fluid selection"><!--fluid:填充整行-->
+                        <input type="hidden" name="tag">
+                        <div class="default text">标签</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="a">java</div>
+                            <div class="item" data-value="a">JavaScript</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui left labeled input">
+                <div class="ui teal label">首图</div>
+                <div class="ui dropdown selection fluid">
+                    <input type="hidden" name="image-url">
+                    <div class="default text">首图地址</div>
+                    <i class="dropdown icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="inline fields"><!--inline:占据一行，不分行-->
+            <div class="field">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="recommend" id="recommend" data-value="1">
+                    <!-- input和label id之间关联，可以点击label checkbox也会被选中  -->
+                    <label for="recommend" class="label">推荐</label>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="shareInfo" id="shareInfo" data-value="1">
+                    <!-- input和label id之间关联，可以点击label checkbox也会被选中  -->
+                    <label for="recommend" class="label">转载声明</label>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="appreciation" id="appreciation" data-value="1">
+                    <!-- input和label id之间关联，可以点击label checkbox也会被选中  -->
+                    <label for="appreciation" class="label">赞赏</label>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui checkbox">
+                    <input type="checkbox" name="comment" id="comment" data-value="1">
+                    <!-- input和label id之间关联，可以点击label checkbox也会被选中  -->
+                    <label for="comment" class="label">评论</label>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui error message"></div>
+        </div>
+        <div class="ui right aligned container">
+            <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+            <button type="button" class="ui red button" onclick="reset_form()">重置</button>
+            <button type="button" class="ui green button">保存</button>
+            <button class="ui teal button">发布</button>
+        </div>
+    </form>
+
+</div>
+</body>
+<script language="JavaScript">
+    $(function () {
+        var editor = editormd("md-editormd", {
+            width: "100%",
+            height: 500,
+            path: "../static/lib/editormd/lib/",
+            syncScrolling : "single",//单滚动条
+            placeholder:"博客内容"
+
+        });
+    });
+    function nav_dropdown(){
+        $("nav .ui.dropdown").dropdown();
+    }
+    $("form .ui.dropdown").dropdown();
+    $(".ui.form").form({
+        fields: {
+            title: {
+                identifier: 'title',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '标题：标题不能为空'
+                    }
+                ]
+            },
+            content: {
+                identifier: 'content',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '内容：内容不能为空'
+                    }
+                ]
+            },
+            type: {
+                identifier: 'type',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '分类：分类不能为空'
+                    }
+                ]
+            },
+            tag: {
+                identifier: 'tag',
+                rules: [
+                    {
+                        type: 'empty',
+                        prompt: '标签：标签不能为空'
+                    }
+                ]
+            }
+        }
+    });
+    //清楚重置
+    function reset_form() {
+        $("form").form("reset");
+    }
+</script>
+</html>

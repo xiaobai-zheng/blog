@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小牛博客|关于我</title>
+    <script src="/Jquery/jquery-1.12.4.js" language="JavaScript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" language="JavaScript"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="/css/about.css">
+    <link rel="stylesheet" href="/css/navigation.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <script type="text/javascript">
+        function dropdown(){
+            $(".dropdown").dropdown();
+        }
+    </script>
+</head>
+<body>
+<!-- stackable:可推叠 inverted:反转 secondary:灰色 grid:相当于bootstrap的row，分为16各 attached：使div之间的边框靠近-->
+<!--  导航栏  -->
+<div th:insert="~{navigation::nav(5)}"></div>
+<!--中间部分-->
+<div class="ui container">
+    <div class="ui grid stackable">
+        <div class="eleven wide column">
+            <div class="ui segment">
+                   <img src="https://i.picsum.photos/id/1020/4288/2848.jpg" alt="头像" class="ui image">
+            </div>
+        </div>
+        <div class="five wide column">
+            <div class="ui segments">
+                <div class="ui segment">
+                    关于我
+                </div>
+                <div class="ui segment">
+                    <p>我是一个没有工作的程序员，现在在跟着B站学习java编程，BLOG项目是我做的第三个项目，第二个springBoot项目</p>
+                    <p>页面使用semantic ui制作的，使用的事springBoot框架，MySQL数据库，其中页面制作还用到了多插件</p>
+                </div>
+                <div class="ui segment">
+                    <div class="ui orange label about-right-tags">编程</div>
+                    <div class="ui orange label">睡觉</div>
+                    <div class="ui orange label">看电影</div>
+                    <div class="ui orange label">旅游</div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui teal basic label about-right-tags">java</div>
+                    <div class="ui teal basic label about-right-tags">JavaScript</div>
+                    <div class="ui teal basic label about-right-tags">MySQL</div>
+                    <div class="ui teal basic label about-right-tags">Linux</div>
+                    <div class="ui teal basic label about-right-tags">redis</div>
+                    <div class="ui teal basic label about-right-tags">SSM</div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui circular button icon about-right-tags" id="github-icon"><i class="github icon"></i></div>
+                    <div class="ui circular button icon about-right-tags" id="weixin-icon"><i class="weixin icon"></i></div>
+                    <div class="ui circular button icon about-right-tags" id="qq-icon"><i class="qq icon"></i></div>
+                    <div class="ui popup github-qr">
+                        <img src="https://i.picsum.photos/id/102/4320/3240.jpg" alt="" class="ui image  about-right-qr">
+                        <div class="about-right-qr-font">github:1812856457@qq.com</div>
+                    </div>
+                    <div class="ui popup weixin-qr">
+                        <img src="https://i.picsum.photos/id/1014/6016/4000.jpg" alt="" class="ui image  about-right-qr">
+                        <div class="about-right-qr-font">weixin:17746617379</div>
+                    </div>
+                    <div class="ui popup qq-qr">
+                        <img src="https://i.picsum.photos/id/1014/6016/4000.jpg" alt="" class="ui image  about-right-qr">
+                        <div class="about-right-qr-font">qq:17746617379</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  脚本  -->
+<div th:insert="~{footer::footer}"></div>
+</body>
+<script language="JavaScript">
+    $("#github-icon").popup({
+        popup: $(".github-qr"),
+        on: 'click',
+        position: 'bottom center'
+    });
+    $("#weixin-icon").popup({
+        popup: $(".weixin-qr"),
+        on: 'click',
+        position: 'bottom center'
+    });
+    $("#qq-icon").popup({
+        popup: $(".qq-qr"),
+        on: 'click',
+        position: 'bottom center'
+    });
+</script>
+</html>

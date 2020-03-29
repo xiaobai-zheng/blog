@@ -1,0 +1,26 @@
+.navigation-nav{
+    padding-top: 0px !important;
+    padding-bottom:0px !important;
+    margin-bottom: 50px !important;
+}
+.navigation-mobile-show{
+    display: none !important;
+}
+.navigation-menu-icon{
+    position: absolute !important;/*绝对定位*/
+    top: 10px !important;
+    right: 10px !important;
+}
+/*媒体查询  screen;屏幕 当屏幕的宽度小于768px的时候不显示*/
+@media screen and (max-width: 768px){
+    .navigation-mobile-hide{
+        display: none !important;
+    }
+    .navigation-mobile-show{
+        display: block !important;
+    }
+}
+.navigation-mobile-font{
+    opacity: 0.8;
+    font-weight: bold;
+}

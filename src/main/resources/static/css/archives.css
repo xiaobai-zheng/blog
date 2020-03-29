@@ -1,0 +1,12 @@
+body{
+    background: url("../images/bg.png");
+}
+.archives-center-label{
+    padding: 5px !important;
+    margin-left: 15px !important;
+}
+.archives-center{
+    max-width: 850px !important;
+    margin: 50px auto !important;
+
+}

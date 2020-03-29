@@ -1,0 +1,7 @@
+spring:
+  thymeleaf:
+    mode: HTML
+    #显示实时页面
+    cache: false
+  profiles:
+    active: dev

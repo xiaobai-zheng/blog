@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小牛博客</title>
+    <script src="/Jquery/jquery-1.12.4.js" language="JavaScript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" language="JavaScript"></script>
+    <script src="/lib/prism/prism.js" language="JavaScript"></script><!--代码高亮显示-->
+    <script src="/lib/tocbot/tocbot.min.js" language="JavaScript"></script><!--代码高亮显示-->
+    <script src="/lib/qrcode/qrcode.min.js" language="JavaScript"></script><!--代码高亮显示-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="/css/typo.css"><!--中文排版-->
+    <link rel="stylesheet" href="/css/animate.min.css"><!--动画效果-->
+    <link rel="stylesheet" href="/lib/prism/prism.css"><!--代码高亮显示-->
+    <link rel="stylesheet" href="/lib/tocbot/tocbot.css"><!--生成目录-->
+    <link rel="stylesheet" href="/css/blog.css">
+    <link rel="stylesheet" href="/css/navigation.css">
+
+</head>
+<body style="background: url('../static/images/bg.png');">
+<!-- stackable:可推叠 wide:填充整行 inverted:反转 secondary:灰色 grid:相当于bootstrap的row，分为16各 attached：使div之间的边框靠近-->
+<!--  导航栏  -->
+<div th:insert="~{navigation::nav(99)}"></div>
+<!--中间内容-->
+<div class="ui container">
+    <!--   首航 -->
+    <div class="ui top attached blog-center segment">
+        <div class="ui stackable grid">
+            <div class="two wide column blog-center-nav-div">
+                <img src="https://i.picsum.photos/id/0/5616/3744.jpg" class="ui avatar image">
+                <a href="#">小牛</a>
+            </div>
+            <div class="three wide column blog-center-nav-div">
+                更新于:<span>2020-3-9</span>
+            </div>
+            <div class="two wide column blog-center-nav-div">
+                浏览:<span>999</span>
+            </div>
+            <div class="nine wide column right aligned blog-center-nav-div"><a href="#">博客</a>/正文 </div>
+        </div>
+    </div>
+    <!--  图片区域  -->
+    <div class="ui attached blog-center segment">
+        <img src="https://i.picsum.photos/id/1000/5626/3635.jpg" alt="" class="ui rounded image">
+    </div>
+    <!--  博客内容  -->
+    <div class="ui attached blog-center segment">
+        <div class="ui right aligned basic segment">
+            <div class="ui blue basic label animated pulse">原创</div>
+        </div>
+        <div id="blog-center-essay" class="typo typo-selection">
+            <h2 class="ui center aligned header"><strong>spring boot的介绍</strong></h2>
+            <!--       正文     -->
+            <div class="blog-js-toc-content">
+                <p href="https://www.cnblogs.com/junyang/p/8151802.html">spring boot入门 -- 介绍和第一个例子</p>
+                <p>&ldquo;越来越多的企业选择使用spring boot 开发系统，spring boot牛在什么地方？难不难学？心动不如行动，让我们一起开始学习吧！&rdquo;</p>
+                <p>使用Spring boot ，可以轻松的创建独立运行的程序，非常容易构建独立的服务组件，是实现分布式架构、微服务架构利器。Spring boot简化了第三方包的引用，通过提供的starter，简化了依赖包的配置。</p>
+                <p>&nbsp;</p>
+                <h4 id="blog-tocbot-h4-1"><strong>Spring boot的优点</strong></h4>
+                <ul>
+                    <li>轻松创建独立的Spring应用程序。</li>
+                    <li>内嵌Tomcat、jetty等web容器，不需要部署WAR文件。</li>
+                    <li>提供一系列的&ldquo;starter&rdquo; 来简化的Maven配置。</li>
+                    <li>开箱即用，尽可能自动配置Spring。</li>
+                </ul>
+<!--                <p>&nbsp;<span style="font-size: 18pt;"><strong>spring boot 快速入门</strong></span></p>-->
+                <h4 id="blog-tocbot-h4-2"><strong>spring boot 快速入门</strong></h4>
+                <p>通过构建简单的REST应用，了解spring boot的开发基本流程，验证其简单、易用特性。</p>
+                <h6 id="blog-tocbot-h6"><strong>环境要求</strong></h6>
+                <p>Spring Boot 2.0.0.BUILD-SNAPSHOT 要求 Java 8 和 Spring Framework 5.0.2以上，Maven 3.2 以上或者Gradle 4。</p>
+                <p>本文使用 Spring Boot 1.5.9 、 Java8 和 Spring Framework 5.0.2.RELEASE以上，Maven 3.2。开发工具使用sping官方提供的spring suit tool 3.9.1(STS)。</p>
+            </div>
+            <pre>
+                <code class="language-java">
+                    public String editQuestion(@PathVariable(name = "id") Long questionId, Model model) {
+        QuestionDto questionDto = questionService.selectQuestionById(questionId);
+        model.addAttribute("id", questionDto.getId());
+        model.addAttribute("title", questionDto.getTitle());
+        model.addAttribute("description", questionDto.getDescription());
+        model.addAttribute("tag", questionDto.getTag());
+        return "publish";
+    }
+                </code>
+            </pre>
+        </div>
+        <div class="ui basic teal label blog-center-label">介绍</div>
+        <div class="ui basic center aligned segment">
+            <button class="ui red basic circular button" style="font-weight: bolder" id="popup-button" >打赏</button>
+            <div class="ui popup">
+                <div class="ui two column divided grid bordered rounded">
+                    <div class="column"><img src="/images/weixinzhifu.jpg" class="ui rounded image bordered relaxed"></div>
+                    <div class="column"><img src="/images/zhifu.jpg" class="ui rounded image relaxed"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  博客介绍  -->
+    <div class="ui bottom attached blog-center message">
+        <div class="ui grid middle aligned">
+            <div class="eleven wide column">
+                <ul class="list">
+                    <li>作者：小牛</li>
+                    <li>发表时间：</li>
+                    <li>版权声明：2020-3-13 15:40:00</li>
+                    <li>公众号转载：转载的时候记得打赏作者，谢谢您对我文章的肯定</li>
+                </ul>
+            </div>
+            <div class="five wide column">
+                <img src="/images/wexing.jpg" class="ui rounded bordered image right floated blog-image-qr">
+            </div>
+        </div>
+    </div>
+    <!-- 留言区域   -->
+    <div class="ui attached blog-center segment" id="comment-area">
+        <div class="ui threaded comments">
+            <h3 class="ui teal dividing header" style="font-weight: bold">有事请留言</h3>
+            <div class="comment">
+                <a class="avatar">
+                    <img src="https://picsum.photos/id/1014/367/267">
+                </a>
+                <div class="content">
+                    <a class="author">Matt</a>
+                    <div class="metadata">
+                        <span class="date">今天下午 5:42</span>
+                    </div>
+                    <div class="text">太赞了！ </div>
+                    <div class="actions">
+                        <a class="reply">回复</a>
+                    </div>
+                </div>
+            </div>
+            <div class="comment">
+                <a class="avatar">
+                    <img src="https://picsum.photos/id/1025/367/267">
+                </a>
+                <div class="content">
+                    <a class="author">Elliot Fu</a>
+                    <div class="metadata">
+                        <span class="date">昨天上午12:30</span>
+                    </div>
+                    <div class="text">
+                        <p>這對我的研究是非常有用.謝謝!</p>
+                    </div>
+                    <div class="actions">
+                        <a class="reply">回复</a>
+                    </div>
+                </div>
+                <div class="comments">
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="https://i.picsum.photos/id/1041/5184/2916.jpg">
+                        </a>
+                        <div class="content">
+                            <a class="author">Jenny Hess</a>
+                            <div class="metadata">
+                                <span class="date">刚刚</span>
+                            </div>
+                            <div class="text">艾略特你永远是多么正确 :) </div>
+                            <div class="actions">
+                                <a class="reply">回复</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comment">
+                <a class="avatar">
+                    <img src="https://picsum.photos/id/1025/367/267">
+                </a>
+                <div class="content">
+                    <a class="author">Joe Henderson</a>
+                    <div class="metadata">
+                        <span class="date">5 天以前</span>
+                    </div>
+                    <div class="text">老兄，这太棒了。非常感谢。 </div>
+                    <div class="actions">
+                        <a class="reply">回复</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui form">
+            <div class="field">
+                <textarea name = "comment" placeholder="输入你的评论内容。。。" style="border-style:groove"></textarea>
+            </div>
+            <div class="fields">
+                <div class="field blog-mobile-form-input">
+                    <div class="ui left icon input ">
+                        <input name="nickName" class="blog-mobile-form-input" placeholder="姓名"><i class="user icon"></i>
+                    </div>
+                </div>
+                <div class="field  blog-mobile-form-input">
+                    <div class="ui left icon input">
+                        <input name="email" placeholder="邮箱"><i class="mail icon"></i>
+                    </div>
+                </div>
+                <div class="field blog-mobile-form-input">
+                    <button class="ui teal button  blog-mobile-form-input"><i class="edit outline icon"></i>发布</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui vertical buttons blog-tool">
+    <button type="button" class="ui teal button blog-catalog">目录</button>
+    <a href="#nav-area" class="ui teal button">顶部</a>
+    <a href="#comment-area" class="ui teal button">留言</a>
+    <button type="button" class="ui icon button  blog-tool-weixin"><i class="weixin icon"></i> </button>
+</div>
+<div class="ui flowing transition hidden popup" id="blog-catalog">
+    <ol class="blog-js-toc"></ol>
+</div>
+<div class="ui flowing transition hidden popup" id="blog-tool-qr">
+</div>
+</body>
+<script type="text/javascript">
+    function dropdown(){
+        $(".ui.dropdown").dropdown();
+    };
+    $("#popup-button").popup({
+        inline: true,
+        on: 'click',
+        position: 'right center'
+    });
+    $("button.blog-tool-weixin").popup({
+        popup: $("#blog-tool-qr"),
+        on: "click",
+        position:"left center",
+    });
+    var qrcode = new QRCode('blog-tool-qr', {
+        text: 'http://localhost:63342/blog/blog.html?_ijt=tu3v010rjumjcv2l4mch4d61qb##blog-center-essay',
+        width: 110,
+        height: 110,
+        colorDark : '#000000',
+        colorLight : '#ffffff',
+        correctLevel : QRCode.CorrectLevel.H
+    });
+  $("button.blog-catalog").popup({
+      popup: $("#blog-catalog"),
+      on: "click",
+      position:"left center",
+  });
+    tocbot.init({
+        //目录显示的位置.
+        tocSelector: '.blog-js-toc',
+        //生成目录的目标区域.
+        contentSelector: '.blog-js-toc-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h4, h6',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+</script>
+</html>
