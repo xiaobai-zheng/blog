@@ -65,8 +65,11 @@ public class TagsController {
     }
     @GetMapping("/tags/{id}/delete")
     public String delete(@PathVariable(name = "id") Long id,RedirectAttributes attributes){
+        Tag tag = tagService.getTag(id);
         tagService.deleteTag(id);
-        attributes.addFlashAttribute("msg",Msg.success());
+        Msg msg = Msg.success();
+        msg.setMessage("成功删除了："+tag.getName());
+        attributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/tags";
     }
 }

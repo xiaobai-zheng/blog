@@ -12,8 +12,8 @@
 </head>
 <body>
 <!--导航-->
-<div th:insert="~{admin/navigation::nav(2)}"></div>
-<div class="ui attached secondary segment">
+<div th:insert="~{admin/_fragment::nav(2)}"></div>
+<div class="ui attached secondary segment list-publish">
     <div class="ui container">
         <a href="/admin/types" class="ui active button"><i class="th icon"></i> 列表</a>
         <a href="/admin/types/input" class="ui button"><i class="plus icon"></i>新增</a>
@@ -22,13 +22,8 @@
 <!--中间部分-->
 
 <div class="ui container">
-    <span th:if="${msg != null}">
-        <div class="ui message mini" th:classappend="${msg.code == '100'?'negative':'success'}">
-            <i class="close icon"></i>
-            <p th:text="${msg.message}"></p>
-        </div>
-    </span>
-    <table class="ui called table types-center">
+   <div th:insert="~{admin/_fragment::hint}"></div>
+    <table class="ui called table table-center">
         <thead>
             <tr>
                 <th class="center aligned"> </th>

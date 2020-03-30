@@ -12,13 +12,20 @@ body{
 }
 .blogs-center{
     max-width: 1000px !important;
-    margin: 50px auto !important;
+    margin: 10px auto !important;
 }
 .input-center{
     max-width: 800px !important;
     margin: 100px auto !important;
 }
-.types-center{
+.table-center{
     max-width: 800px !important;
-    margin: 100px auto !important;
+    margin: 30px auto !important;
+}
+.list-publish{
+    margin-bottom: 100px !important;
+}
+.operate-hint{
+    max-width: 800px !important;
+    margin: 0px auto !important;
 }

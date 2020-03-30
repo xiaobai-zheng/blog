@@ -7,17 +7,22 @@
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js" language="JavaScript"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js" language="JavaScript"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <link rel="stylesheet" href="/css/admin/blogs.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
     <link rel="stylesheet" href="/css/navigation.css">
 </head>
 <body>
 <!--导航-->
-<div th:insert="~{admin/navigation::nav(1)}"></div>
-<div th:insert="~{admin/navigation::tools(1)}"></div>
+<div th:insert="~{admin/_fragment::nav(1)}"></div>
+<div class="ui attached secondary segment list-publish">
+    <div class="ui container">
+        <a href="#" class="ui button"><i class="th icon"></i> 列表</a>
+        <a href="#" class="ui button active"><i class="plus icon"></i> 发布</a>
+    </div>
+</div>
 <!--中间部分-->
 <div class="ui container">
     <!--  中间头部表单部分  -->
-    <form class="ui form padded segment  blogs-center" action="#" method="get">
+    <form class="ui form padded segment blogs-center" action="#" method="get">
         <div class="fields">
             <div class="field">
                 <input type="text" name="title" placeholder="标题">

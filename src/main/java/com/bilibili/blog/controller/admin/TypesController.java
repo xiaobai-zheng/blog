@@ -65,8 +65,11 @@ public class TypesController {
     }
     @GetMapping("/types/{id}/delete")
     public String delete(@PathVariable(name = "id") Long id,RedirectAttributes attributes){
+        Type type = typeService.getType(id);
         typeService.deleteType(id);
-        attributes.addFlashAttribute("msg",Msg.success());
+        Msg msg = Msg.success();
+        msg.setMessage("成功删除了分类："+type.getName());
+        attributes.addFlashAttribute("msg", msg);
         return "redirect:/admin/types";
     }
 }

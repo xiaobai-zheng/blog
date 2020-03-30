@@ -4,10 +4,11 @@ spring:
       filter:
         enabled: true #开启了对delete put请求方式的自持
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/blog?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF8
-    name: root
+    username: root
     password: 'root123'
+
   jpa:
     hibernate:
       ddl-auto: none #当持久类改变的时候，数据库对应的字段也会发生相应的变化

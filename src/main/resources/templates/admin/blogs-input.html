@@ -14,8 +14,13 @@
 </head>
 <body>
 <!--导航-->
-<div th:insert="~{admin/navigation::nav(1)}"></div>
-<div th:insert="~{admin/navigation::tools(2)}"></div>
+<div th:insert="~{admin/_fragment::nav(1)}"></div>
+<div class="ui attached secondary segment list-publish">
+    <div class="ui container">
+        <a href="#" class="ui button"><i class="th icon"></i> 列表</a>
+        <a href="#" class="ui button active"><i class="plus icon"></i> 发布</a>
+    </div>
+</div>
 <!--中间部分-->
 <div class="ui container">
     <!--  中间头部表单部分  -->
