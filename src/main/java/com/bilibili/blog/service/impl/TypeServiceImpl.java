@@ -11,6 +11,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
 @Service
 public class TypeServiceImpl implements TypeService {
     @Autowired
@@ -70,5 +73,10 @@ public class TypeServiceImpl implements TypeService {
     public Type getTypeByName(String name) {
        Type type = typeDao.findByName(name);
         return type;
+    }
+
+    @Override
+    public List<Type> listAll() {
+        return typeDao.findAll();
     }
 }
