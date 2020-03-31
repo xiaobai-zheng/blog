@@ -17,19 +17,20 @@
 <div th:insert="~{admin/_fragment::nav(1)}"></div>
 <div class="ui attached secondary segment list-publish">
     <div class="ui container">
-        <a href="#" class="ui button"><i class="th icon"></i> 列表</a>
-        <a href="#" class="ui button active"><i class="plus icon"></i> 发布</a>
+        <a href="/admin/blogs" class="ui button"><i class="th icon"></i> 列表</a>
+        <a href="/admin/blogs/input" class="ui button active"><i class="plus icon"></i> 发布</a>
     </div>
 </div>
 <!--中间部分-->
 <div class="ui container">
     <!--  中间头部表单部分  -->
-    <form class="ui form padded segment  blogs-center" action="" method="post">
-         <div class="field">
+    <form class="ui form padded segment blogs-center" action="" method="post">
+        <input type="hidden" name="published" value="0">
+        <div class="field required">
              <div class="ui left labeled input">
                  <div class="ui dropdown selection teal label compact"><!-- compact:用于容器大小适应文本的 -->
-                     <input type="hidden" name="publish-type" data-value="1">
-                     <div class="text">原创</div>
+                     <input type="hidden" name="flag" data-value="1">
+                     <div class="text" data-value="1">原创</div>
                      <i class="dropdown icon"></i>
                      <div class="menu">
                          <div class="item" data-value="1">原创</div>
@@ -40,17 +41,17 @@
                  <input type="text" name="title" placeholder="标题">
              </div>
          </div>
-        <div class="field">
+        <div class="field required">
             <div id="md-editormd" style="z-index: 1">
                 <textarea name="content" placeholder="博客内容" style="display: none"></textarea>
             </div>
         </div>
         <div class="two fields">
-            <div class="field">
+            <div class="field required">
                 <div class="ui left labeled input">
                     <div class="ui teal label">分类</div>
                     <div class="ui dropdown selection fluid">
-                        <input type="hidden" name="type">
+                        <input type="hidden" id="type" name="type.id">
                         <div class="default text">分类</div>
                         <i class="dropdown icon"></i>
                         <div class="menu">
@@ -60,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <div class="field">
+            <div class="field required">
                 <div class="ui left labeled input">
                     <div class="ui teal label">标签</div>
                     <div class="ui dropdown multiple search fluid selection"><!--fluid:填充整行-->
@@ -79,7 +80,7 @@
             <div class="ui left labeled input">
                 <div class="ui teal label">首图</div>
                 <div class="ui dropdown selection fluid">
-                    <input type="hidden" name="image-url">
+                    <input type="hidden" name="firstPicture">
                     <div class="default text">首图地址</div>
                     <i class="dropdown icon"></i>
                 </div>
@@ -95,7 +96,7 @@
             </div>
             <div class="field">
                 <div class="ui checkbox">
-                    <input type="checkbox" name="shareInfo" id="shareInfo" data-value="1">
+                    <input type="checkbox" name="shareStatement" id="shareInfo" data-value="1">
                     <!-- input和label id之间关联，可以点击label checkbox也会被选中  -->
                     <label for="recommend" class="label">转载声明</label>
                 </div>
@@ -109,7 +110,7 @@
             </div>
             <div class="field">
                 <div class="ui checkbox">
-                    <input type="checkbox" name="comment" id="comment" data-value="1">
+                    <input type="checkbox" name="commentabled" id="comment" data-value="1">
                     <!-- input和label id之间关联，可以点击label checkbox也会被选中  -->
                     <label for="comment" class="label">评论</label>
                 </div>
@@ -121,8 +122,8 @@
         <div class="ui right aligned container">
             <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
             <button type="button" class="ui red button" onclick="reset_form()">重置</button>
-            <button type="button" class="ui green button">保存</button>
-            <button class="ui teal button">发布</button>
+            <button type="button" class="ui green button" id="save-btn">保存</button>
+            <button class="ui teal button" id="publish-btn">发布</button>
         </div>
     </form>
 
@@ -139,10 +140,26 @@
 
         });
     });
+    //清楚重置
+    function reset_form() {
+        $("form").form("reset");
+    }
+    //保存数据
+    $("#save-btn").click(function () {
+        $("input[name='published']").val(0);
+        $("form").submit();
+    });
+    //发布数据
+    $("#publish-btn").click(function () {
+        $("input[name='published']").val(1);
+        $("form").submit();
+    });
+    //导航栏的下拉菜单
     function nav_dropdown(){
         $("nav .ui.dropdown").dropdown();
     }
     $("form .ui.dropdown").dropdown();
+    //表单验证
     $(".ui.form").form({
         fields: {
             title: {
@@ -183,9 +200,7 @@
             }
         }
     });
-    //清楚重置
-    function reset_form() {
-        $("form").form("reset");
-    }
+
+
 </script>
 </html>

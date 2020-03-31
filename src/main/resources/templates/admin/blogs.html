@@ -15,21 +15,21 @@
 <div th:insert="~{admin/_fragment::nav(1)}"></div>
 <div class="ui attached secondary segment list-publish">
     <div class="ui container">
-        <a href="#" class="ui button"><i class="th icon"></i> 列表</a>
-        <a href="#" class="ui button active"><i class="plus icon"></i> 发布</a>
+        <a href="/admin/blogs" class="ui button"><i class="th icon"></i> 列表</a>
+        <a href="/admin/blogs/input" class="ui button active"><i class="plus icon"></i> 发布</a>
     </div>
 </div>
 <!--中间部分-->
 <div class="ui container">
     <!--  中间头部表单部分  -->
-    <form class="ui form padded segment blogs-center" action="/admin/blogs/search" method="get">
+    <form class="ui form padded segment blogs-center" action="/admin/blogs/search" method="post">
         <div class="fields">
             <div class="field">
                 <input type="text" name="title" placeholder="标题">
             </div>
             <div class="field">
                 <div class="ui dropdown selection">
-                    <input type="hidden" name="tag">
+                    <input type="hidden" name="typeId">
                     <div class="default text">分类</div>
                     <i class="dropdown icon" onclick="form_dropdown()"></i>
                     <div class="menu">
@@ -39,17 +39,17 @@
             </div>
             <div class="field">
                 <div class="ui checkbox">
-                    <input type="checkbox" name="recommend" id="recommend" data-value="1">
+                    <input type="checkbox" name="recommend" id="recommend" data-value="true">
                     <!-- input和label id之间关联，可以点击label checkbox也会被选中  -->
                     <label for="recommend" class="label">推荐</label>
                 </div>
             </div>
             <div class="field">
-                <button type="button" class="ui teal button"><i class="search icon"></i><b>搜索</b></button>
+                <button type="button" class="ui teal button" id="search-btn"><i class="search icon"></i><b>搜索</b></button>
             </div>
         </div>
     </form>
-    <table class="ui called table blogs-center" th:fragment="table-container">
+    <table class="ui called table blogs-center" id="table-container" th:fragment="table-container">
         <thead>
             <tr>
                 <th> </th>
@@ -95,6 +95,15 @@
     function form_dropdown() {
         $("form .ui.dropdown").dropdown();
     }
-    function page
+    function loaddata(){
+        $("#table-container").load("/admin/blogs/search",{
+            title: $("input[name='title']").val(),
+            typeId: $("input[name='typeId']").val(),
+            recommend: $("input[name='recommend']").val()
+        });
+    }
+    $("#search-btn").click(function () {
+        loaddata();
+    });
 </script>
 </html>

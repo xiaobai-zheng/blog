@@ -1,9 +1,11 @@
 package com.bilibili.blog.controller.admin;
 
+import com.bilibili.blog.pojo.Blog;
 import com.bilibili.blog.service.BlogService;
 import com.bilibili.blog.service.TypeService;
 import com.bilibili.blog.vo.BlogVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -30,7 +32,8 @@ public class BlogsController {
     @PostMapping("/blogs/search")
     public String search(@PageableDefault(size =10,sort = "id",direction = Sort.Direction.DESC) Pageable pageable,
                          BlogVo blogVo, Model model){
-        model.addAttribute("blogPage",blogService.listSearch(pageable,blogVo));
+        Page<Blog> blogPage = blogService.listSearch(pageable, blogVo);
+        model.addAttribute("blogPage", blogPage);
         return "admin/blogs::table-container";
     }
 }

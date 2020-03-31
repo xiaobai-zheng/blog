@@ -2,6 +2,7 @@ package com.bilibili.blog.service.impl;
 
 import com.bilibili.blog.dao.BlogDao;
 import com.bilibili.blog.pojo.Blog;
+import com.bilibili.blog.pojo.Type;
 import com.bilibili.blog.service.BlogService;
 import com.bilibili.blog.util.Msg;
 import com.bilibili.blog.vo.BlogVo;
@@ -58,10 +59,10 @@ public class BlogServiceImpl implements BlogService {
                     predicates.add(cb.like(root.<String>get("title"), "%" + blogVo.getTitle() + "%"));
                 }
                 if (blogVo.getTypeId() != null) {
-                    predicates.add(cb.equal(root.<Long>get("typeId"), blogVo.getTypeId()));
+                    predicates.add(cb.equal(root.<Type>get("type").get("id"), blogVo.getTypeId()));
                 }
                 if (blogVo.isRecommend()) {
-                    predicates.add(cb.equal(root.<Boolean>get(""), blogVo.isRecommend()));
+                    predicates.add(cb.equal(root.<Boolean>get("recommend"), blogVo.isRecommend()));
                 }
                 cq.where(predicates.toArray(new Predicate[predicates.size()]));
                 return null;
