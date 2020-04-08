@@ -4,32 +4,35 @@
 
 </head>
 <body>
-<nav class="ui inverted attached segment navigation-nav" th:fragment="nav(n)">
+<nav class="ui inverted attached segment navigation-nav" th:fragment="nav(n)" id="nav-area">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">Blog</h2>
-            <a href="#" class="item navigation-mobile-hide" th:classappend="${n==1?'active':''}"><i class="home icon"></i>首页</a>
-            <a href="#" class="item navigation-mobile-hide" th:classappend="${n==2?'active':''}"><i class="idea icon"></i>分类</a>
-            <a href="#" class="item navigation-mobile-hide" th:classappend="${n==3?'active':''}"><i class="tags icon"></i>标签</a>
-            <a href="#" class="item navigation-mobile-hide" th:classappend="${n==4?'active':''}"><i class="clone icon"></i>归档</a>
-            <a href="#" class="item navigation-mobile-hide" th:classappend="${n==5?'active':''}"><i class="info icon"></i>关于我</a>
+            <a href="/" class="item navigation-mobile-hide" th:classappend="${n==1?'active':''}"><i class="home icon"></i>首页</a>
+            <a href="/types/-1" class="item navigation-mobile-hide" th:classappend="${n==2?'active':''}"><i class="idea icon"></i>分类</a>
+            <a href="/tags/-1" class="item navigation-mobile-hide" th:classappend="${n==3?'active':''}"><i class="tags icon"></i>标签</a>
+            <a href="/archives" class="item navigation-mobile-hide" th:classappend="${n==4?'active':''}"><i class="clone icon"></i>归档</a>
+            <a href="/about" class="item navigation-mobile-hide" th:classappend="${n==5?'active':''}"><i class="info icon"></i>关于我</a>
             <div class="right item navigation-mobile-hide">
-                <div class="ui input icon">
-                    <input type="text" placeholder="搜索一下。。。">
-                    <i class="search link icon"></i><!-- search:搜索的图标 -->
-                </div>
+                <form name="search" action="/search" method="post" target="_blank">
+                    <div class="ui input icon">
+                        <input type="text" placeholder="搜索一下。。。" name="query" th:value="${query}">
+                        <i onclick="document.forms['search'].submit()" class="search link icon"></i><!-- search:搜索的图标 -->
+                    </div>
+                </form>
+
             </div>
             <!-- 移动端的时候显示的菜单图标 -->
             <div class="item navigation-mobile-show  navigation-menu-icon">
                 <div class="ui dropdown  navigation-menu-icon">
                     <i class="align justify icon button" onclick="dropdown()"></i>
                     <div class="menu">
-                        <a href="#" class="item navigation-mobile-font"><i class="mini home icon"></i>首页</a>
-                        <a href="#" class="item navigation-mobile-font"><i class="mini idea icon"></i>分类</a>
-                        <a href="#" class="item navigation-mobile-font"><i class="mini tags icon"></i>标签</a>
-                        <a href="#" class="item navigation-mobile-font"><i class="mini clone icon"></i>归档</a>
-                        <a href="#" class="item navigation-mobile-font"><i class="mini info icon"></i>关于我</a>
-                        <a href="#" class="item navigation-mobile-font"><i class="mini search link icon"></i>搜索</a>
+                        <a href="/" class="item navigation-mobile-font"><i class="mini home icon"></i>首页</a>
+                        <a href="/types/-1" class="item navigation-mobile-font"><i class="mini idea icon"></i>分类</a>
+                        <a href="/tags/-1" class="item navigation-mobile-font"><i class="mini tags icon"></i>标签</a>
+                        <a href="/archives" class="item navigation-mobile-font"><i class="mini clone icon"></i>归档</a>
+                        <a href="/about" class="item navigation-mobile-font"><i class="mini info icon"></i>关于我</a>
+<!--                        <a href="#" class="item navigation-mobile-font"><i class="mini search link icon"></i>搜索</a>-->
                     </div>
                 </div>
             </div>

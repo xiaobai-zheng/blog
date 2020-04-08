@@ -15,20 +15,23 @@
 <div th:insert="~{admin/_fragment::nav(1)}"></div>
 <div class="ui attached secondary segment list-publish">
     <div class="ui container">
-        <a href="/admin/blogs" class="ui button"><i class="th icon"></i> 列表</a>
-        <a href="/admin/blogs/input" class="ui button active"><i class="plus icon"></i> 发布</a>
+        <a href="/admin/blogs" class="ui button active"><i class="th icon"></i> 列表</a>
+        <a href="/admin/blogs/input" class="ui button"><i class="plus icon"></i> 发布</a>
     </div>
 </div>
 <!--中间部分-->
 <div class="ui container">
     <!--  中间头部表单部分  -->
+    <!--  操作提示  -->
+    <div th:insert="~{admin/_fragment::hint}"></div>
     <form class="ui form padded segment blogs-center" action="/admin/blogs/search" method="post">
+        <input type="hidden" name="page" value="0">
         <div class="fields">
             <div class="field">
                 <input type="text" name="title" placeholder="标题">
             </div>
             <div class="field">
-                <div class="ui dropdown selection">
+                <div class="ui dropdown selection" id="type-dropdown">
                     <input type="hidden" name="typeId">
                     <div class="default text">分类</div>
                     <i class="dropdown icon" onclick="form_dropdown()"></i>
@@ -39,13 +42,13 @@
             </div>
             <div class="field">
                 <div class="ui checkbox">
-                    <input type="checkbox" name="recommend" id="recommend" data-value="true">
+                   <input type="checkbox" name="recommend" id="recommend">
                     <!-- input和label id之间关联，可以点击label checkbox也会被选中  -->
                     <label for="recommend" class="label">推荐</label>
                 </div>
             </div>
             <div class="field">
-                <button type="button" class="ui teal button" id="search-btn"><i class="search icon"></i><b>搜索</b></button>
+                <button type="button" class="ui teal button" id="search-btn" onclick="submitSearch()"><i class="search icon"></i><b>搜索</b></button>
             </div>
         </div>
     </form>
@@ -56,32 +59,33 @@
                 <th>标题</th>
                 <th>类型</th>
                 <th>推荐</th>
+                <th>发布|草稿</th>
                 <th>更新时间</th>
                 <th>操作</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="blog,blogStat:${blogPage.content}">
-                <td th:text="${blogStat.count}"></td>
+                <td th:text="${blogStat.count}" ></td>
                 <td th:text="${blog.title}"></td>
                 <td th:text="${blog.type.name}"></td>
                 <td th:text="${blog.recommend?'是':'否'}"></td>
+                <td th:text="${blog.published?'发布':'草稿'}"></td>
                 <td th:text="${blog.updateTime}"></td>
                 <td>
-                    <a href="#" target="_blank" class="ui teal basic mini button">修改</a>
-                    <a href="#" target="_blank" class="ui red basic mini button">删除</a>
+                    <a th:href="@{/admin/blogs/{id}/alter(id=${blog.id})}" class="ui teal basic mini button">修改</a>
+                    <a th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui red basic mini button">删除</a>
                 </td>
             </tr>
-
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="6">
+                <th colspan="7">
                     <span th:if="${blogPage.totalPages>1}">
-                        <a th:unless="${blogPage.first}" th:href="@{/admin/blog(page=${tagPage.number -1})}" class="ui button">上一页</a>
-                        <a th:unless="${blogPage.last}" th:href="@{/admin/blog(page=${tagPage.number +1})}" class="ui button">下一页</a>
+                        <button th:unless="${blogPage.first}" th:data-page="${blogPage.number - 1}" class="ui button" onclick="top_bottom(this)">上一页</button>
+                        <button th:unless="${blogPage.last}" th:data-page="${blogPage.number + 1}" class="ui button" onclick="top_bottom(this)">下一页</button>
                     </span>
-                    <a href="/admin/tags/input" class="ui right floated green button">添加</a>
+                    <a href="/admin/blogs/input" class="ui right floated green button">添加</a>
                 </th>
             </tr>
         </tfoot>
@@ -92,18 +96,33 @@
     function nav_dropdown(){
         $("nav .ui.dropdown").dropdown();
     }
-    function form_dropdown() {
-        $("form .ui.dropdown").dropdown();
+    //可以将已经选好的分类清除掉
+    $("#type-dropdown").dropdown({
+        clearable: true,
+        placeholder: "分类"
+    });
+    function submitSearch(){
+        $("input[name='page']").val(0);
+        loaddata();
     }
     function loaddata(){
         $("#table-container").load("/admin/blogs/search",{
             title: $("input[name='title']").val(),
             typeId: $("input[name='typeId']").val(),
-            recommend: $("input[name='recommend']").val()
+            recommend: $("input[name='recommend']").prop("checked"),
+            page: $("input[name='page']").val()
         });
+        alert($("input[name='recommend']").prop("checked"));
     }
-    $("#search-btn").click(function () {
+   function top_bottom(e) {
+        $("input[name='page']").val($(e).attr("data-page"));
         loaddata();
-    });
+    };
+    //操作提示，可关闭按钮
+    $('.message .close')
+        .on('click', function() {
+            $(this).closest('.message').transition('fade');
+        });
+
 </script>
 </html>

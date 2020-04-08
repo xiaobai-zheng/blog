@@ -22,10 +22,13 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+    @Basic(fetch = FetchType.LAZY)
+    @Lob
     private String content;//内容
     private String firstPicture;//首图地址
     private String flag;//标记；原创，转载，翻译
-    private Integer views;//浏览次数
+    private String description;//博客描述
+    private Integer views=0;//浏览次数
     private boolean appreciation;//是否赞赏
     private boolean shareStatement;//转载声明是否开启
     private boolean commentabled;//是否可以评论
@@ -43,6 +46,6 @@ public class Blog {
     @ManyToOne
     private User user;
     @OneToMany(mappedBy = "blog")
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 
 }

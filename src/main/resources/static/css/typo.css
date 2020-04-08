@@ -5,6 +5,14 @@
 .typo button, .typo input, .typo select, .typo textarea {
   font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 }
+/*自定义类，解决code标签不自动换行*/
+.typo code{
+  white-space: normal;
+  word-break: break-all;
+}
+.typo p{
+  line-height: 1.5;
+}
 
 .typo button::-moz-focus-inner,
 .typo input::-moz-focus-inner {

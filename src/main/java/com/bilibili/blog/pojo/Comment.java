@@ -20,6 +20,7 @@ public class Comment {
     private String content;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
+    private boolean adminComment;
     @ManyToOne
     private Blog blog;
     @OneToMany(mappedBy = "parentComment")

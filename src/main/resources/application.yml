@@ -5,3 +5,5 @@ spring:
     cache: false
   profiles:
     active: dev
+comment:
+  avatar: "https://i.picsum.photos/id/1025/4951/3301.jpg"

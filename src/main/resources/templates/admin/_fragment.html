@@ -4,14 +4,14 @@
 
 </head>
 <body>
-<nav class="ui attached inverted segment blogs-nav" th:fragment="nav(n)">
+<nav class="ui attached inverted segment admin-nav" th:fragment="nav(n)">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui header teal item">后台管理</h2>
             <a href="/admin/blogs" class="item navigation-mobile-hide" th:classappend="${n==1?'active':''}"><i class="home icon"></i>博客</a>
             <a href="/admin/types" class="item navigation-mobile-hide" th:classappend="${n==2?'active':''}"><i class="idea icon"></i>分类</a>
             <a href="/admin/tags" class="item navigation-mobile-hide" th:classappend="${n==3?'active':''}"><i class="tags icon"></i>标签</a>
-            <div class="item right menu admin-nav">
+            <div class="item right menu navigation-menu-icon">
                 <div class="ui dropdown">
                     <span th:if="${session.user != null}">
                         <img th:src="${session.user.avatar}" class="ui avatar image">

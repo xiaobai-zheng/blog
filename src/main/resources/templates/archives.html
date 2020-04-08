@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +10,7 @@
     <link rel="stylesheet" href="/css/archives.css">
     <link rel="stylesheet" href="/css/navigation.css">
     <link rel="stylesheet" href="/css/footer.css">
-    <script type="text/javascript">
-        function dropdown(){
-            $(".dropdown").dropdown();
-        }
-    </script>
+
 </head>
 <body>
 <!-- stackable:可推叠 inverted:反转 secondary:灰色 grid:相当于bootstrap的row，分为16各 attached：使div之间的边框靠近-->
@@ -24,114 +20,32 @@
     <!--  中间的头部  -->
     <div class="ui padded segment archives-center">
         <span class="ui header teal">归档</span>
-        <span style="float: right">一共<h2 class="ui orange header" style="display: inline-block">14</h2>中</span>
+        <span style="float: right">一共<h2 class="ui orange header" style="display: inline-block" th:text="${count}">14</h2>中</span>
     </div>
     <!--  归类部分  -->
-    <div class="ui segment archives-center">
-        <h2 class="ui header center aligned">2017</h2>
+    <div class="ui segment archives-center" th:each="blogMap:${blogMaps}">
+        <h2 class="ui header center aligned" th:text="${blogMap.key}">2017</h2>
         <div class="ui vertical fluid menu"><!-- fluid：填充整行 -->
-            <a href="#" target="_blank" class="item">
+            <a th:each="blog:${blogMap.value}" th:href="@{/blog/{id}(id=${blog.id})}" class="item">
                 <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
+                    <i class="circle mini teal icon"></i>
+                    <span th:text="${blog.title}"></span>
+                    <div class="ui basic teal left pointing label archives-center-label" th:text="${#dates.format(blog.updateTime,'MM-dd')}"></div>
+                </span>
+                <div class="ui basic orange label" th:text="${blog.flag}">原创</div>
             </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-        </div>
-        <div class="ui segment">
-            <a class="ui teal mini basic button">上一页</a>
-            <a class="ui teal  mini basic button" style="float: right">下一页</a>
         </div>
     </div>
-    <div class="ui segment archives-center">
-        <h2 class="ui header center aligned">2018</h2>
-        <div class="ui vertical fluid menu"><!-- fluid：填充整行 -->
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-        </div>
-        <div class="ui segment">
-            <a class="ui teal mini basic button">上一页</a>
-            <a class="ui teal  mini basic button" style="float: right">下一页</a>
-        </div>
-    </div>
-    <div class="ui segment archives-center">
-        <h2 class="ui header center aligned">2019</h2>
-        <div class="ui vertical fluid menu"><!-- fluid：填充整行 -->
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-            <a href="#" target="_blank" class="item">
-                <span class="teal">
-                    <i class="circle mini teal icon"></i>spring boot的介绍<div class="ui basic teal left pointing label archives-center-label">3月14</div>
-                </span><div class="ui basic orange label">原创</div>
-            </a>
-        </div>
-        <div class="ui segment">
-            <a class="ui teal mini basic button">上一页</a>
-            <a class="ui teal  mini basic button" style="float: right">下一页</a>
-        </div>
-    </div>
-
 </div>
 <!--  脚本  -->
 <div th:insert="~{footer::footer}"></div>
 </body>
+<script type="text/javascript">
+    function dropdown(){
+        $(".dropdown").dropdown();
+    }
+    //初始化脚本中的最新博客内容
+    $("#blogs").load(/*[[@{/footer/blog}]]*/"");
+</script>
+
 </html>

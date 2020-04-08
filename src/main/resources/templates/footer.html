@@ -12,17 +12,19 @@
             </div>
             <div class="three wide column">
                 <h4 class="ui inverted header">最新博客</h4>
-                <div class="ui inverted list footer-font">
-                    <a href="#" class="item">今日疫情</a>
-                    <a href="#" class="item">在家的这些天</a>
-                    <a href="#" class="item">无所事事</a>
+                <div id="blogs">
+                    <div class="ui inverted list footer-font" th:fragment="newBlog">
+                        <a th:each="blog:${footerBlogs}" th:href="@{/blog/{id}(id=${blog.getId()})}" class="item" th:text="${blog.getTitle()}">今日疫情</a>
+                    </div>
                 </div>
+
             </div>
             <div class="four wide column">
                 <h4 class="ui inverted header">联系我们</h4>
                 <div class="ui inverted list footer-font">
-                    <a href="#" class="item">Email:1812856457@qq.com</a>
-                    <a href="#" class="item">QQ:1812856457</a>
+<!--                    #{}从messages.properties配置文件中取数据-->
+                    <a href="#" class="item">Email:<span th:text="#{footer.email}"></span></a>
+                    <a href="#" class="item">QQ:<span th:text="#{footer.qq}"></span></a>
                 </div>
             </div>
             <div class="six wide column">
